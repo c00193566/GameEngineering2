@@ -14,6 +14,7 @@ public:
 		BUTTONA = SDLK_SPACE;
 		BUTTONB = SDLK_z;
 		BUTTONX = SDLK_r; // Redo
+		BUTTONY = SDLK_u; //undo
 
 		Button_A = new JumpCommand;
 		Button_B = new FireCommand;

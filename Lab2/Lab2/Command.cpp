@@ -19,6 +19,16 @@ void MacroCommand::add(Command* c)
 	Commands->push_back(c);
 }
 
+void MacroCommand::redo()
+{
+	LastExecutedCommand->execute();
+}
+
+void MacroCommand::undo()
+{
+	Commands->pop_back();
+}
+
 void MacroCommand::remove(Command* c)
 {
 	LastExecutedCommand = c;

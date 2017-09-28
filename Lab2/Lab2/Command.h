@@ -10,6 +10,8 @@ public:
 	virtual void execute() = 0;
 	virtual void add(Command*) = 0;
 	virtual void remove(Command*) = 0;
+	virtual void redo() = 0;
+	virtual void undo() = 0;
 
 protected:
 	Command() {}
@@ -22,6 +24,8 @@ public:
 	virtual void add(Command*);
 	virtual void remove(Command*);
 	virtual void execute();
+	virtual void redo();
+	virtual void undo();
 	list<Command*>* getCommands() { return Commands; };  
 	Command* LastExecutedCommand;
 

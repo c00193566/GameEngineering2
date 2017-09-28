@@ -20,7 +20,7 @@ void Game::HandleEvents()
 		
 		Input->HandleInput(localEvent, Commands);
 
-		if (Commands->getCommands()->size() != 0)
+		if (Commands->getCommands()->size() > 3)
 		{
 			Commands->execute();
 		}
