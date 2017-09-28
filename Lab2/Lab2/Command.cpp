@@ -16,6 +16,7 @@ void MacroCommand::execute()
 
 void MacroCommand::add(Command* c)
 {
+	LastExecutedCommand = c;
 	Commands->push_back(c);
 }
 
@@ -27,10 +28,10 @@ void MacroCommand::redo()
 void MacroCommand::undo()
 {
 	Commands->pop_back();
+	cout << Commands->size() << endl;
 }
 
 void MacroCommand::remove(Command* c)
 {
-	LastExecutedCommand = c;
 	Commands->remove(c);
 }

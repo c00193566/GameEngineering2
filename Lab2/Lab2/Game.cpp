@@ -22,6 +22,7 @@ void Game::HandleEvents()
 
 		if (Commands->getCommands()->size() > 3)
 		{
+			cout << Commands->getCommands()->size() << endl;
 			Commands->execute();
 		}
 	}
