@@ -32,12 +32,26 @@ void Character::Render(SDL_Renderer* renderer)
 
 void Character::Jump()
 {
-	FSM->jumping();
-	SetFrame();
+	if (!FSM->getJumping() && !FSM->getFiring())
+	{
+		FSM->jump();
+		SetFrame();
+	}
+	else
+	{
+		cout << "Unable to carry out command..." << endl;
+	}
 }
 
 void Character::Fire()
 {
-	FSM->firing();
-	SetFrame();
+	if (!FSM->getJumping() && !FSM->getFiring())
+	{
+		FSM->fire();
+		SetFrame();
+	}
+	else
+	{
+		cout << "Unable to carry out command..." << endl;
+	}
 }

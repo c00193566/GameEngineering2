@@ -3,21 +3,33 @@
 Animation::Animation()
 {
 	current = new Idle;
+	Idling = true;
+	Jumping = false;
+	Firing = false;
 }
 
 void Animation::idle()
 {
 	current->idle(this);
+	Idling = true;
+	Jumping = false;
+	Firing = false;
 }
 
-void Animation::jumping()
+void Animation::jump()
 {
 	current->jump(this);
+	Idling = false;
+	Jumping = true;
+	Firing = false;
 }
 
-void Animation::firing()
+void Animation::fire()
 {
 	current->fire(this);
+	Idling = false;
+	Jumping = false;
+	Firing = true;
 }
 
 void Animation::Update(SDL_Rect &SpriteSheet, int &Frames, int &CurrentFrame)
@@ -63,6 +75,7 @@ void Jump::idle(Animation* a)
 {
 	cout << "going from jumping to idling" << endl;
 	a->setCurrent(new Idle);
+	a->idle();
 	delete this;
 }
 
@@ -89,6 +102,7 @@ void Fire::idle(Animation* a)
 {
 	cout << "going from firing to idling" << endl;
 	a->setCurrent(new Idle);
+	a->idle();
 	delete this;
 }
 

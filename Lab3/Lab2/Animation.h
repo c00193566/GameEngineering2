@@ -9,6 +9,9 @@ using namespace std;
 class Animation {
 private:
 	class State* current;
+	bool Jumping;
+	bool Idling;
+	bool Firing;
 
 public:
 	Animation();
@@ -19,11 +22,14 @@ public:
 	}
 
 	void idle();
-	void jumping();
-	void firing();
+	void jump();
+	void fire();
 	void Update(SDL_Rect &SpriteSheet, int &Frames, int &CurrentFrame);
 
 	State* getCurrent() { return current; };
+	bool getJumping() { return Jumping; };
+	bool getIdling () { return Idling; };
+	bool getFiring() { return Firing; };
 };
 
 class State {
