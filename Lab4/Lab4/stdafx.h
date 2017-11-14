@@ -1,13 +1,14 @@
 #pragma once
 
-#if defined (_WIN64) || defined(_WIN32)
+#if defined(_WIN64) || defined(_WIN32)
 #include <stdio.h>
 #include <tchar.h>
-#include <iostream>
 #include <vector>
+#include <iostream>
 #include <sstream>
 #include <string>
-#include <fstream>
 #include <cmath>
+#include <fstream>
+#include <iterator>
 using namespace std;
 #endif
