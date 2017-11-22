@@ -24,11 +24,43 @@ bool Game::Init()
 
 	LastTime = 0;
 
-	actors = new Actors;
-	actors->Add(new Protagonist);
-	actors->Add(new Boss);
+	//Create Player
+	GameObject Player;
+	Player.AddComponent(new HealthComponent);
+	Player.AddComponent(new PositionComponent(200.0f, 200.0f));
+	Player.AddComponent(new ControlComponent);
 
-	if (window == nullptr || renderer == nullptr || actors == nullptr)
+	//Create Alien
+	GameObject Alien;
+	Alien.AddComponent(new HealthComponent);
+	Alien.AddComponent(new PositionComponent(200.0f, 200.0f));
+
+	//Create Dog
+	GameObject Dog;
+	Dog.AddComponent(new HealthComponent);
+	Dog.AddComponent(new PositionComponent(200.0f, 200.0f));
+
+	//Create Cat
+	GameObject Cat;
+	Cat.AddComponent(new HealthComponent);
+	Cat.AddComponent(new PositionComponent(200.0f, 200.0f));
+
+	//Add to AI System
+	AI_System.AddGameObject(Player);
+	AI_System.AddGameObject(Alien);
+	AI_System.AddGameObject(Dog);
+	AI_System.AddGameObject(Cat);
+
+	//Add to Render System
+	Render_System.AddGameObject(Player);
+	Render_System.AddGameObject(Alien);
+	Render_System.AddGameObject(Dog);
+	Render_System.AddGameObject(Cat);
+
+	//Add to Control System
+	Control_System.AddGameObject(Player);
+
+	if (window == nullptr || renderer == nullptr)
 	{
 		return false;
 	}
@@ -63,7 +95,10 @@ void Game::Loop()
 
 void Game::Update(unsigned int DT)
 {
-	actors->Update(DT);
+	// Update systems
+	AI_System.Update(DT);
+	Render_System.Update(DT);
+	Control_System.Update(DT);
 }
 
 void Game::Event()
@@ -77,7 +112,6 @@ void Game::Event()
 			quit = true;
 		}
 	}
-
 }
 
 void Game::Render()

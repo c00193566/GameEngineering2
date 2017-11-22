@@ -2,9 +2,8 @@
 #include "stdafx.h"
 #include "SDL_Timer.h"
 #include "SDL.h"
-#include "Boss.h"
-#include "Protangonist.h"
-#include "Actors.h"
+#include "GameObject.h"
+#include "Systems.h"
 
 class Game
 {
@@ -14,7 +13,9 @@ private:
 	bool quit;
 	unsigned int LastTime;
 
-	Actors* actors = nullptr;
+	AISystem AI_System;
+	RenderSystem Render_System;
+	ControlSystem Control_System;
 
 public:
 	Game();
