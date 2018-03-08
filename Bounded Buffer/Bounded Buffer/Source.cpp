@@ -71,7 +71,7 @@ public:
 			m_mutex.lock();
 
 			// Output and sleep
-			cout << "Produced : " << randNum << " " << endl;
+			cout << "Produced : " << randNum << endl;
 			this_thread::sleep_for(chrono::milliseconds(50));
 
 			// Unlock mutex
@@ -104,7 +104,7 @@ public:
 			m_mutex.lock();
 
 			// Output and sleep
-			cout << "Consumed : " << num << endl;
+			cout << " Consumed : " << num << endl;
 			this_thread::sleep_for(chrono::milliseconds(50));
 
 			// Unlock mutex
